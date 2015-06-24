@@ -27,6 +27,8 @@ namespace Beta
             InitializeComponent();
 
             init();
+            Show();
+            Hide();
             
             
         }
@@ -84,6 +86,8 @@ namespace Beta
             this.Visibility = System.Windows.Visibility.Visible;
             this.ShowInTaskbar = true;
             this.Activate();
+            this.textBox.Focusable = true;
+            Keyboard.Focus(this.textBox);
         }
 
         private void Hide(object sender, EventArgs e)
@@ -95,6 +99,11 @@ namespace Beta
         private void Close(object sender, EventArgs e)
         {
             System.Windows.Application.Current.Shutdown();
+        }
+
+        private void OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
         }
         
 
