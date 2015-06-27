@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -52,6 +53,11 @@ namespace Beta
 
             // 关联快捷键 alt+space
             SetHotKey("Alt + Space", OnHotKey);
+
+            // 设置线程池上限
+            ThreadPool.SetMaxThreads(30, 10);
+
+            // 建立索引
         }
 
         #region UI Methods
@@ -219,6 +225,8 @@ namespace Beta
 
         private void InputTextBox_OnTextChanged(object sender, TextChangedEventArgs e)
         {
+            resultListBox.Dirty = true;
+
             List<Result> results = new List<Result>();
 
             for (int i = 0; i < 10; i++)

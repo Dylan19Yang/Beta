@@ -34,6 +34,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="NHotkey">
       <HintPath>..\packages\NHotkey.1.2.1\lib\net20\NHotkey.dll</HintPath>
     </Reference>
@@ -61,6 +65,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\Component\Component.cs" />
+    <Compile Include="Model\Component\ComponentLoader.cs" />
+    <Compile Include="Model\Component\ComponentMetadata.cs" />
+    <Compile Include="Model\Component\Components.cs" />
+    <Compile Include="Model\Component\IComponent.cs" />
+    <Compile Include="Model\Component\SystemComponent.cs" />
+    <Compile Include="Model\UserSetting.cs" />
     <Compile Include="View\ResultListView.xaml.cs">
       <DependentUpon>ResultListView.xaml</DependentUpon>
     </Compile>
