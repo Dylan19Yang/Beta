@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Beta.Model.Component
 {
-    public interface IComponent
+    public class ComponentContext
     {
-        public List<Result> Query(Query query);
-        public void Init(ComponentContext context);
+        public IGlobalAPI GlobalAPI { get; set; }
     }
 }
