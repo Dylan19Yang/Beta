@@ -14,99 +14,288 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Forms;
 
+using NHotkey;
+using NHotkey.Wpf;
+
+using Beta.Model;
+
+using ContextMenu = System.Windows.Forms.ContextMenu;
+using MenuItem = System.Windows.Forms.MenuItem;
+using TextBox = System.Windows.Controls.TextBox;
+using ToolTip = System.Windows.Controls.ToolTip;
+using Rectangle = System.Drawing.Rectangle;
+using MessageBox = System.Windows.MessageBox;
+
 namespace Beta
 {
     /// <summary>
     /// MainWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, IGlobalAPI
     {
+        #region Properties
+
         private NotifyIcon notifyIcon;
+
+        #endregion
+
         public MainWindow()
         {
             InitializeComponent();
 
-            init();
-            Show();
-            Hide();
-            
-            
+            // 初始化系统托盘
+            InitTray();
+
+            // 关联点击事件
+            resultListBox.LeftMouseClickEvent += SelectResult;
+            resultListBox.RightMouseClickEvent += ResultListBox_RightMouseClickEvent;
+
+            // 关联快捷键 alt+space
+            SetHotKey("Alt + Space", OnHotKey);
         }
 
-        public void init()
+        #region UI Methods
+
+        private void InitTray()
         {
-            icon();
-            this.StateChanged += new EventHandler(Window_StateChanged);
-            this.Deactivated += new EventHandler(Window_LostFocus);
+            notifyIcon = new NotifyIcon { 
+                Text = "Beta", 
+                Icon = System.Drawing.Icon.ExtractAssociatedIcon(System.Windows.Forms.Application.ExecutablePath), 
+                Visible = true 
+            };
+
+            notifyIcon.Click += (o, e) => ShowBeta();
+
+            // 打开菜单项
+            var open = new MenuItem("Open");
+            open.Click += (o, e) => ShowBeta();
+
+            // 退出菜单项
+            var exit = new MenuItem("Exit");
+            exit.Click += (o, e) => CloseApp();
+
+            // 添加到托盘
+            MenuItem[] childen = { open, exit };
+            notifyIcon.ContextMenu = new ContextMenu(childen);
         }
 
-        public void icon()
-        {
-            this.notifyIcon = new NotifyIcon();
-            this.notifyIcon.BalloonTipText = "Beta最小化中...";
-            this.notifyIcon.ShowBalloonTip(2000);
-            this.notifyIcon.Text = "Beta最小化中...";
-            this.notifyIcon.Icon = System.Drawing.Icon.ExtractAssociatedIcon(System.Windows.Forms.Application.ExecutablePath);
-            //this.notifyIcon.Icon = new System.Drawing.Icon(@"AppIcon.ico");
-            this.notifyIcon.Visible = true;
-            //打开菜单项
-            System.Windows.Forms.MenuItem open = new System.Windows.Forms.MenuItem("Open");
-            open.Click += new EventHandler(Show);
-            //退出菜单项
-            System.Windows.Forms.MenuItem exit = new System.Windows.Forms.MenuItem("Exit");
-            exit.Click += new EventHandler(Close);
-            //关联托盘控件
-            System.Windows.Forms.MenuItem[] childen = new System.Windows.Forms.MenuItem[] { open, exit };
-            notifyIcon.ContextMenu = new System.Windows.Forms.ContextMenu(childen);
+        #endregion
 
-            this.notifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler((o, e) =>
+        #region Global API
+
+        public void CloseApp()
+        {
+            Dispatcher.Invoke(new Action(() =>
             {
-                if (e.Button == MouseButtons.Left) this.Show(o, e);
-            });
+                notifyIcon.Visible = false;
+                Close();
+                Environment.Exit(0);
+            }));
         }
 
-        private void Window_LostFocus(object sender, EventArgs e)
+        public void HideApp()
         {
-            Hide();
+            Dispatcher.Invoke(new Action(HideBeta));
         }
 
-        private void Window_StateChanged(object sender, EventArgs e)
+        public void ShowApp()
         {
-            WindowState ws = WindowState;
-            /*
-            if (ws == WindowState.Minimized)
+            Dispatcher.Invoke(new Action(() => ShowBeta()));
+        }
+
+        public void PushResult(List<Result> results)
+        {
+            OnUpdateResultView(results);
+        }
+
+        #endregion
+
+        public void SetHotKey(string hotKeyStr, EventHandler<HotkeyEventArgs> action)
+        {
+            var hotkey = new HotKeyModel(hotKeyStr);
+            try
             {
-                Hide();
+                HotkeyManager.Current.AddOrReplace(hotKeyStr, hotkey.CharKey, hotkey.ModifierKeys, action);
             }
-            */
+            catch (Exception)
+            {
+                MessageBox.Show("Register hotkey: " + hotKeyStr + " failed.");
+            }
         }
 
-        private void Show(object sender, EventArgs e)
+        public void RemoveHotKey(string hotKeyStr)
         {
-            this.Visibility = System.Windows.Visibility.Visible;
-            this.ShowInTaskbar = true;
-            this.Activate();
-            this.textBox.Focusable = true;
-            Keyboard.Focus(this.textBox);
+            if (!string.IsNullOrEmpty(hotKeyStr))
+            {
+                HotkeyManager.Current.Remove(hotKeyStr);
+            }
         }
 
-        private void Hide(object sender, EventArgs e)
+        #region Actions
+
+        private void ShowBeta(bool selectAllText = true)
         {
-            this.ShowInTaskbar = false;
-            this.Visibility = System.Windows.Visibility.Hidden;
+            if (!double.IsNaN(Left) && !double.IsNaN(Top))
+            {
+                var origScreen = Screen.FromRectangle(new Rectangle((int)Left, (int)Top, (int)ActualWidth, (int)ActualHeight));
+                var screen = Screen.FromPoint(System.Windows.Forms.Cursor.Position);
+                var coordX = (Left - origScreen.WorkingArea.Left) / (origScreen.WorkingArea.Width - ActualWidth);
+                var coordY = (Top - origScreen.WorkingArea.Top) / (origScreen.WorkingArea.Height - ActualHeight);
+                Left = (screen.WorkingArea.Width - ActualWidth) * coordX + screen.WorkingArea.Left;
+                Top = (screen.WorkingArea.Height - ActualHeight) * coordY + screen.WorkingArea.Top;
+            }
+
+            Show();
+            Activate();
+            Focus();
+            inputTextBox.Focus(); // 聚焦输入框
+
+            // 默认自动全选
+            if (selectAllText) inputTextBox.SelectAll();
         }
 
-        private void Close(object sender, EventArgs e)
+        private void HideBeta()
         {
-            System.Windows.Application.Current.Shutdown();
+            Hide();
         }
 
-        private void OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void SelectResult(Result result)
         {
-            DragMove();
+            if (result != null)
+            {
+                
+            }
+        }
+
+        private Result GetActiveResult()
+        {
+            return resultListBox.GetActiveResult();
+        }
+
+        private void SelectPrevItem()
+        {
+            resultListBox.SelectPrev();
+        }
+
+        private void SelectNextItem()
+        {
+            resultListBox.SelectNext();
+        }
+
+        /// <summary>
+        /// 处理alt+space快捷键
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OnHotKey(object sender, HotkeyEventArgs e)
+        {
+            if (!IsVisible)
+            {
+                ShowBeta();
+            }
+            else
+            {
+                HideBeta();
+            }
+            e.Handled = true;
+        }
+
+        public void OnUpdateResultView(List<Result> list)
+        {
+            if (list == null || list.Count == 0) return;
+
+            if (list.Count > 0)
+            {
+                Dispatcher.Invoke(new Action(() =>
+                   resultListBox.AddResults(list))
+                );
+            }
+        }
+
+        private void Border_OnMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left) DragMove();
+        }
+
+        private void InputTextBox_OnTextChanged(object sender, TextChangedEventArgs e)
+        {
+            List<Result> results = new List<Result>();
+
+            for (int i = 0; i < 10; i++)
+            {
+                results.Add(new Result() {
+                    Title = "HEHEH",
+                    SubTitle = "asdfasdfasdf"
+                });
+            }
+
+            OnUpdateResultView(results);
+        }
+
+        void ResultListBox_RightMouseClickEvent(Result result)
+        {
+            
+        }
+
+        private void InputTextBox_OnPreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            //when alt is pressed, the real key should be e.SystemKey
+            Key key = (e.Key == Key.System ? e.SystemKey : e.Key);
+            switch (key)
+            {
+                case Key.Escape:
+                    HideBeta();
+                    e.Handled = true;
+                    break;
+
+                case Key.Tab:
+                    //if (globalHotkey.CheckModifiers().ShiftPressed)
+                    //{
+                    //    SelectPrevItem();
+                    //}
+                    //else
+                    //{
+                    //    SelectNextItem();
+                    //}
+                    e.Handled = true;
+                    break;
+
+                case Key.Down:
+                    SelectNextItem();
+                    e.Handled = true;
+                    break;
+
+                case Key.Up:
+                    SelectPrevItem();
+                    e.Handled = true;
+                    break;
+
+                case Key.PageDown:
+                    resultListBox.SelectNextPage();
+                    e.Handled = true;
+                    break;
+
+                case Key.PageUp:
+                    resultListBox.SelectPrevPage();
+                    e.Handled = true;
+                    break;
+
+                case Key.Back:
+                    
+                    break;
+
+                case Key.F1:
+                    
+                    break;
+
+                case Key.Enter:
+                    Result activeResult = GetActiveResult();
+                    SelectResult(activeResult);
+                    e.Handled = true;
+                    break;
+            }
         }
         
-
-            
+        #endregion
     }
 }
