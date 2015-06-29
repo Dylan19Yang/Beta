@@ -65,14 +65,22 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Model\Component\Component.cs" />
-    <Compile Include="Model\Component\ComponentContext.cs" />
-    <Compile Include="Model\Component\ComponentLoader.cs" />
-    <Compile Include="Model\Component\ComponentMetadata.cs" />
-    <Compile Include="Model\Component\Components.cs" />
-    <Compile Include="Model\Component\IComponent.cs" />
-    <Compile Include="Model\Component\SystemComponent.cs" />
+    <Compile Include="Model\CommandDispatcher.cs" />
+    <Compile Include="Model\ComponentSystem\Component.cs" />
+    <Compile Include="Model\ComponentSystem\ComponentContext.cs" />
+    <Compile Include="Model\ComponentSystem\ComponentLoader.cs" />
+    <Compile Include="Model\ComponentSystem\ComponentMetadata.cs" />
+    <Compile Include="Model\ComponentSystem\Components.cs" />
+    <Compile Include="Model\ComponentSystem\IComponent.cs" />
+    <Compile Include="CustomeComponents\SystemComponent.cs" />
+    <Compile Include="Model\Program.cs" />
     <Compile Include="Model\UserSetting.cs" />
+    <Compile Include="Utils\DispatcherExtension.cs" />
+    <Compile Include="Utils\FuzzyMatcher.cs" />
+    <Compile Include="Utils\PeHeaderReader.cs" />
+    <Compile Include="Utils\Unidecoder.Characters.cs" />
+    <Compile Include="Utils\Unidecoder.cs" />
+    <Compile Include="Utils\WindowsShellRun.cs" />
     <Compile Include="View\ResultListView.xaml.cs">
       <DependentUpon>ResultListView.xaml</DependentUpon>
     </Compile>

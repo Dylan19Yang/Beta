@@ -19,6 +19,8 @@ using NHotkey;
 using NHotkey.Wpf;
 
 using Beta.Model;
+using Beta.Utils;
+using Beta.Model.ComponentSystem;
 
 using ContextMenu = System.Windows.Forms.ContextMenu;
 using MenuItem = System.Windows.Forms.MenuItem;
@@ -37,6 +39,9 @@ namespace Beta
         #region Properties
 
         private NotifyIcon notifyIcon;
+        private bool queryHasReturn;
+        private string lastQuery;
+        private ToolTip toolTip = new ToolTip();
 
         #endregion
 
@@ -58,6 +63,12 @@ namespace Beta
             ThreadPool.SetMaxThreads(30, 10);
 
             // 建立索引
+            ThreadPool.QueueUserWorkItem(o =>
+            {
+                Thread.Sleep(50);
+                Components.Init();
+                Console.WriteLine("组件初始化完毕！！！");
+            });
         }
 
         #region UI Methods
@@ -113,6 +124,32 @@ namespace Beta
         {
             OnUpdateResultView(results);
         }
+
+        public bool ShellRun(string cmd, bool runAsAdministrator = false)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(cmd))
+                    throw new ArgumentNullException();
+
+                WindowsShellRun.Start(cmd, runAsAdministrator);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Could not start " + cmd + "\n" + ex.Message);
+            }
+            return false;
+        }
+
+        //void ShowMsg(string title, string subTitle, string iconPath)
+        //{
+        //    Dispatcher.Invoke(new Action(() =>
+        //    {
+        //        var m = new Msg { Owner = GetWindow(this) };
+        //        m.Show(title, subTitle, iconPath);
+        //    }));
+        //}
 
         #endregion
 
@@ -225,19 +262,28 @@ namespace Beta
 
         private void InputTextBox_OnTextChanged(object sender, TextChangedEventArgs e)
         {
+            lastQuery = inputTextBox.Text;
+            toolTip.IsOpen = false;
             resultListBox.Dirty = true;
-
-            List<Result> results = new List<Result>();
-
-            for (int i = 0; i < 10; i++)
-            {
-                results.Add(new Result() {
-                    Title = "HEHEH",
-                    SubTitle = "asdfasdfasdf"
-                });
-            }
-
-            OnUpdateResultView(results);
+            Dispatcher.DelayInvoke("UpdateSearch",
+                o =>
+                {
+                    Dispatcher.DelayInvoke("ClearResults", i =>
+                    {
+                        // first try to use clear method inside pnlResult, which is more closer to the add new results
+                        // and this will not bring splash issues.After waiting 30ms, if there still no results added, we
+                        // must clear the result. otherwise, it will be confused why the query changed, but the results
+                        // didn't.
+                        if (resultListBox.Dirty) resultListBox.Clear();
+                    }, TimeSpan.FromMilliseconds(100), null);
+                    queryHasReturn = false;
+                    var q = new Query(lastQuery);
+                    CommandDispatcher.Dispatch(q);
+                    if (Components.MatchComponentActionName(q))
+                    {
+                        Console.WriteLine("Match Component Action Name '{0}'", q);
+                    }
+                }, TimeSpan.FromMilliseconds(150));
         }
 
         void ResultListBox_RightMouseClickEvent(Result result)

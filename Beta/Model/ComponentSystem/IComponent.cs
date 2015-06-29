@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Beta.Model.Component
+namespace Beta.Model.ComponentSystem
 {
     public interface IComponent
     {
-        public List<Result> Query(Query query);
-        public void Init(ComponentContext context);
+        List<Result> Query(Query query);
+        void Init(ComponentContext context);
     }
 }

@@ -14,5 +14,9 @@ namespace Beta
         void HideApp();
         void ShowApp();
         void PushResult(List<Result> results);
+
+        bool ShellRun(string cmd, bool runAsAdministrator = false);
+
+        //void ShowMsg(string title, string subTitle, string iconPath);
     }
 }

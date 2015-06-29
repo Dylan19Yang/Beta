@@ -11,6 +11,9 @@ namespace Beta.Model
         public string Title { get; set; }
         public string SubTitle { get; set; }
         public string IconPath { get; set; }
+        public int Score { get; set; }
+
+        public Func<bool> Action { get; set; }
 
         public Result()
         {

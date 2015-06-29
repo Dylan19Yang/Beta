@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Beta.Model.Component
+namespace Beta.Model.ComponentSystem
 {
     public abstract class Component : IComponent
     {
