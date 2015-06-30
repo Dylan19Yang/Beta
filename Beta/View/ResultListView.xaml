@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="100" d:DesignWidth="100">
-    <ListBox x:Name="lbResults" HorizontalContentAlignment="Stretch" Focusable="False" SelectionChanged="lbResults_OnSelectionChanged" PreviewMouseDown="lbResults_OnPreviewMouseDown" MaxHeight="300" ItemTemplate="{DynamicResource DataTemplate}">
+    <ListBox x:Name="lbResults" HorizontalContentAlignment="Stretch" Focusable="False" SelectionChanged="lbResults_OnSelectionChanged" PreviewMouseDown="lbResults_OnPreviewMouseDown" MaxHeight="300" ItemTemplate="{DynamicResource DataTemplate}" BorderBrush="#FFEBEBEB" Background="#FFD1D1D1">
         <ListBox.Resources>
             <DataTemplate x:Key="DataTemplate">
                 <Grid HorizontalAlignment="Stretch" Grid.Column="1">
