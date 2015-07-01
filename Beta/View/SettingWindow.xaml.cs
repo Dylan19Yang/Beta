@@ -39,7 +39,7 @@ namespace Beta.View
             }
         }
 
-        public void ShowDetailWindow(int itemNumber)
+        public void ShowDetailWindow(int number)
         {
             /*
             Dispatcher.Invoke(new Action(() =>
@@ -51,9 +51,11 @@ namespace Beta.View
                 window.Focus();
             }));
             */
-            DetailWindow window = new DetailWindow();
-            window.itemNumber = itemNumber;
+            DetailWindow window = new DetailWindow() { 
+            itemNumber=number
+            };
             window.Show();
+            window.WindowState = WindowState.Normal;
             window.Focus();
         }
 

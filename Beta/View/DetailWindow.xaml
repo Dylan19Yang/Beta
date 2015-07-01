@@ -19,8 +19,8 @@
         <Label  Grid.Row="4" Content="URL"/>
         <TextBox x:Name="textURL" Grid.Row="5" BorderBrush="#FFEBEBEA" BorderThickness="10,5"/>
         <StackPanel Grid.Row="6" Orientation="Horizontal">
-            <Button Width="70" Height="30" Content="Cancel" MouseLeftButtonUp="buttonCancelMouseUp"/>
-            <Button Width="70" Height="30" Content="OK" MouseLeftButtonUp="buttonOkMouseUp"/>
+            <Button Width="70" Height="30" Content="Cancel" PreviewMouseLeftButtonUp="buttonCancelMouseUp"/>
+            <Button Width="70" Height="30" Content="OK" PreviewMouseLeftButtonUp="buttonOkMouseUp"/>
         </StackPanel>
     </Grid>
 </Window>

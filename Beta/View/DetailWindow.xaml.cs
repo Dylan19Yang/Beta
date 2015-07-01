@@ -23,7 +23,7 @@ namespace Beta.View
     public partial class DetailWindow : Window
     {
         private List<WebSearchEngine> webSearchEngines = new List<WebSearchEngine>();
-        public int itemNumber;
+        public int itemNumber{get;set;}
         private WebSearchEngine newWebSearchEngine = new WebSearchEngine();
         public DetailWindow()
         {
