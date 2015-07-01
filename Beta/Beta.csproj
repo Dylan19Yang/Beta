@@ -93,6 +93,9 @@
     <Compile Include="Utils\Unidecoder.Characters.cs" />
     <Compile Include="Utils\Unidecoder.cs" />
     <Compile Include="Utils\WindowsShellRun.cs" />
+    <Compile Include="View\DetailWindow.xaml.cs">
+      <DependentUpon>DetailWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\ResultListView.xaml.cs">
       <DependentUpon>ResultListView.xaml</DependentUpon>
     </Compile>
@@ -112,6 +115,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\DetailWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\ResultListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

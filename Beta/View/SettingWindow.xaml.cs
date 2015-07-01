@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 
 using Beta.Model;
 using Beta.Settings;
+using Beta.View;
 
 namespace Beta.View
 {
@@ -31,20 +32,33 @@ namespace Beta.View
 
         public void AddWebSearchEngine(List<WebSearchEngine> webSearchEngines)
         {
+            lbWebSearchEngines.Items.Clear();
             foreach (var webSearchEngine in webSearchEngines)
             {
                 lbWebSearchEngines.Items.Add(webSearchEngine);
             }
         }
 
+        public void ShowDetailWindow(int itemNumber)
+        {
+            Dispatcher.Invoke(new Action(() =>
+            {
+                var window = Application.Current.Windows.OfType<Window>().FirstOrDefault(x => x.GetType() == typeof(DetailWindow))
+                         ?? (DetailWindow)Activator.CreateInstance(typeof(DetailWindow));
+                (window as DetailWindow).itemNumber = itemNumber;
+                window.Show();
+                window.Focus();
+            }));
+        }
+
         private void buttonAddMouseUp(object sender, MouseButtonEventArgs e)
         {
-
+            ShowDetailWindow(-1);
         }
 
         private void buttonEditMouseUp(object sender, MouseButtonEventArgs e)
         {
-
+            ShowDetailWindow(lbWebSearchEngines.SelectedIndex);
         }
     }
 }

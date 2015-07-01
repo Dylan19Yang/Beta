@@ -14,7 +14,7 @@
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
                     <TextBlock x:Name="actionWord" Grid.Column="0" DockPanel.Dock="Left" VerticalAlignment="Center" ToolTip="{Binding ActionWord}" Text="{Binding ActionWord}"/>
-                    <TextBlock x:Name="title" Grid.Column="1" ToolTip="{Binding Title}" Grid.Row="1" Text="{Binding Title}"/>
+                        <TextBlock x:Name="title" Grid.Column="1" VerticalAlignment="Center" ToolTip="{Binding Title}" Grid.Row="1" Text="{Binding Title}"/>
                 </Grid>
             </DataTemplate>
         </ListBox.Resources>
