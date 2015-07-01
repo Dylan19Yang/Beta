@@ -1,4 +1,7 @@
 ﻿using System;
+using System.IO;
+using System.Diagnostics;
+
 using Beta.Utils;
 
 namespace Beta.Model
@@ -28,5 +31,29 @@ namespace Beta.Model
         public string ExecutePath { get; set; }
         public string ExecuteName { get; set; }
         public int Score { get; set; }
+
+        public Program() { }
+        public Program(string filepath)
+        {
+            Title = Path.GetFileNameWithoutExtension(filepath);
+            IcoPath = filepath;
+            ExecutePath = filepath;
+
+            switch (Path.GetExtension(filepath).ToLower())
+            {
+                case ".exe":
+                    ExecuteName = Path.GetFileName(filepath);
+                    try
+                    {
+                        FileVersionInfo versionInfo = FileVersionInfo.GetVersionInfo(filepath);
+                        if (!string.IsNullOrEmpty(versionInfo.FileDescription))
+                        {
+                            Title = versionInfo.FileDescription;
+                        }
+                    }
+                    catch (Exception) { }
+                    break;
+            }
+        }
     }
 }

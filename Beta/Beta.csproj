@@ -73,9 +73,12 @@
     <Compile Include="Model\ComponentSystem\Components.cs" />
     <Compile Include="Model\ComponentSystem\IComponent.cs" />
     <Compile Include="CustomeComponents\SystemComponent.cs" />
+    <Compile Include="Model\Config.cs" />
     <Compile Include="Model\Program.cs" />
     <Compile Include="Model\UserSetting.cs" />
     <Compile Include="Utils\DispatcherExtension.cs" />
+    <Compile Include="Utils\FileChangerWatcher.cs" />
+    <Compile Include="Utils\FileSystemHelper.cs" />
     <Compile Include="Utils\FuzzyMatcher.cs" />
     <Compile Include="Utils\PeHeaderReader.cs" />
     <Compile Include="Utils\Unidecoder.Characters.cs" />

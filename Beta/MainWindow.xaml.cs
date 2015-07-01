@@ -206,7 +206,7 @@ namespace Beta
         {
             if (result != null)
             {
-                
+                result.Action();
             }
         }
 

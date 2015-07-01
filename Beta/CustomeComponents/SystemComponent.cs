@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -46,9 +47,9 @@ namespace Beta.CustomeComponents
                     /*
                     Context.GlobalAPI.HideApp();
                     Context.GlobalAPI.ShellRun(o.ExecutePath);
-                    */                 
+                    */
                     Context.InvokeMethodInMainWindow("HideApp", null);
-                    Context.InvokeMethodInMainWindow("ShellRun", new object[]{o.ExecutePath});
+                    Context.InvokeMethodInMainWindow("ShellRun", new object[]{o.ExecutePath, false});
                     #endregion
                     return true;
                 }
@@ -65,13 +66,12 @@ namespace Beta.CustomeComponents
             return false;
         }
 
-        private void LoadPrograms()
+        public static void LoadPrograms()
         {
             lock (lockObject)
             {
                 List<Program> tempProgramList = new List<Program>();
 
-                // TODO: 下面三个方法实际上还未实现，现在返回的是假数据
                 tempProgramList.AddRange(LoadProgramsFromAppPaths());
                 tempProgramList.AddRange(LoadProgramsFromCommonStartMenu());
                 tempProgramList.AddRange(LoadProgramsFromUserStartMenu());
@@ -80,40 +80,33 @@ namespace Beta.CustomeComponents
             }
         }
 
-        private List<Program> LoadProgramsFromCommonStartMenu()
+        private static List<Program> LoadProgramsFromCommonStartMenu()
         {
-            List<Program> test = new List<Program>();
-            test.Add(new Program()
-            {
-                Title = "test1",
-                IcoPath = "Test Icon Path",
-                ExecutePath = "Test Execute Path"
-            });
-            return test;
+            List<Program> list = new List<Program>();
+            FileSystemHelper.GetAppFromDirectory(FileSystemHelper.GetCommonStartMenuPath(), list);
+            return list;
         }
 
-        private List<Program> LoadProgramsFromAppPaths()
+        private static List<Program> LoadProgramsFromAppPaths()
         {
-            List<Program> test = new List<Program>();
-            test.Add(new Program()
-            {
-                Title = "test2 eeee T Python",
-                IcoPath = "Test Icon Path",
-                ExecutePath = "Test Execute Path"
-            });
-            return test;
+            List<Program> list = new List<Program>();
+            FileSystemHelper.ReadAppPaths(@"SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths", list);
+            FileSystemHelper.ReadAppPaths(@"SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\App Paths", list);
+            return list;
         }
 
-        private List<Program> LoadProgramsFromUserStartMenu()
+        private static List<Program> LoadProgramsFromUserStartMenu()
         {
-            List<Program> test = new List<Program>();
-            test.Add(new Program()
+            List<Program> list = new List<Program>();
+            string baseDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Programs);
+            if (Directory.Exists(baseDirectory))
             {
-                Title = "test2 sdafdsa",
-                IcoPath = "Test Icon Path",
-                ExecutePath = "Test Execute Path"
-            });
-            return test;
+                FileSystemHelper.GetAppFromDirectory(baseDirectory, list);
+                FileChangeWatcher.AddWatch(baseDirectory);
+            }
+            return list;
         }
+
+        
     }
 }
