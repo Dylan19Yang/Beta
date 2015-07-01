@@ -39,12 +39,12 @@ namespace Beta.CustomeComponents
 
             ex = new ExpressionHelper(){
                 expre=query.QueryText,
-                result=99999999
+                result=99999999,
+                flag=false
             };
             Thread thread = new Thread(new ThreadStart(ex.startCalculate));
             thread.Start();
-            timerClose = new System.Threading.Timer(new TimerCallback(timerCall), this,0,1500);
-            Thread.Sleep(1);
+            timerClose = new System.Threading.Timer(new TimerCallback(timerCall), this,0,10000);
             while (ex.result == 99999999) { }
             double answer=ex.result;
             if(answer==-99999999)
@@ -58,7 +58,7 @@ namespace Beta.CustomeComponents
                 Action = () =>
                 {
                     Context.InvokeMethodInMainWindow("HideApp", null);
-                    Context.InvokeMethodInMainWindow("ShellRun", new object[] { o.ExecutePath });
+                    Context.InvokeMethodInMainWindow("ShellRun", new object[] { programs[0].ExecutePath });
                     return true;
                 }
             };
