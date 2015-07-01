@@ -18,6 +18,7 @@ using System.Windows.Forms;
 using NHotkey;
 using NHotkey.Wpf;
 
+using Beta.View;
 using Beta.Model;
 using Beta.Utils;
 using Beta.Settings;
@@ -29,6 +30,7 @@ using TextBox = System.Windows.Controls.TextBox;
 using ToolTip = System.Windows.Controls.ToolTip;
 using Rectangle = System.Drawing.Rectangle;
 using MessageBox = System.Windows.MessageBox;
+using Application = System.Windows.Application;
 
 namespace Beta
 {
@@ -88,12 +90,16 @@ namespace Beta
             var open = new MenuItem("Open");
             open.Click += (o, e) => ShowBeta();
 
+            // 打开设置窗口
+            var setting = new MenuItem("Setting");
+            setting.Click += (o, e) => ShowSettingWindow();
+
             // 退出菜单项
             var exit = new MenuItem("Exit");
             exit.Click += (o, e) => CloseApp();
 
             // 添加到托盘
-            MenuItem[] childen = { open, exit };
+            MenuItem[] childen = { open, setting, exit };
             notifyIcon.ContextMenu = new ContextMenu(childen);
         }
 
@@ -119,6 +125,18 @@ namespace Beta
         public void ShowApp()
         {
             Dispatcher.Invoke(new Action(() => ShowBeta()));
+        }
+
+        public void ShowSettingWindow()
+        {
+            Dispatcher.Invoke(new Action(() =>
+            {
+                var window = Application.Current.Windows.OfType<Window>().FirstOrDefault(x => x.GetType() == typeof(SettingWindow))
+                         ?? (SettingWindow)Activator.CreateInstance(typeof(SettingWindow));
+                Application.Current.MainWindow.Hide();
+                window.Show();
+                window.Focus();
+            }));
         }
 
         public void PushResult(List<Result> results)

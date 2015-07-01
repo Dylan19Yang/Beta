@@ -13,6 +13,7 @@ namespace Beta
         void CloseApp();
         void HideApp();
         void ShowApp();
+        void ShowSettingWindow();
         void PushResult(List<Result> results);
 
         bool ShellRun(string cmd, bool runAsAdministrator = false);

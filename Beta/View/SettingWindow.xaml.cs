@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
 using Beta.Model;
+using Beta.Settings;
 
 namespace Beta.View
 {
@@ -24,6 +25,8 @@ namespace Beta.View
         public SettingWindow()
         {
             InitializeComponent();
+
+            AddWebSearchEngine(UserSetting.Instance.WebSearchEngines);
         }
 
         public void AddWebSearchEngine(List<WebSearchEngine> webSearchEngines)
