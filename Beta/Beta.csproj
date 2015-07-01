@@ -65,6 +65,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CustomeComponents\CalculatorComponent.cs" />
     <Compile Include="Model\CommandDispatcher.cs" />
     <Compile Include="Model\ComponentSystem\Component.cs" />
     <Compile Include="Model\ComponentSystem\ComponentContext.cs" />
