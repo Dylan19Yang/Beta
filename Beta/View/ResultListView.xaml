@@ -2,19 +2,32 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:converters="clr-namespace:Beta.Utils"
              mc:Ignorable="d" 
              d:DesignHeight="100" d:DesignWidth="100">
-    <ListBox x:Name="lbResults" HorizontalContentAlignment="Stretch" Focusable="False" SelectionChanged="lbResults_OnSelectionChanged" PreviewMouseDown="lbResults_OnPreviewMouseDown" MaxHeight="300" ItemTemplate="{DynamicResource DataTemplate}" BorderBrush="#FFEBEBEB" Background="#FFD1D1D1" BorderThickness="0">
+    <ListBox x:Name="lbResults" HorizontalContentAlignment="Stretch" Focusable="False" SelectionChanged="lbResults_OnSelectionChanged" PreviewMouseDown="lbResults_OnPreviewMouseDown" MaxHeight="300" ItemTemplate="{DynamicResource DataTemplate}" BorderBrush="#FFEBEBEB" Background="#FFD1D1D1" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
         <ListBox.Resources>
             <DataTemplate x:Key="DataTemplate">
-                <Grid HorizontalAlignment="Stretch" Grid.Column="1">
-                    <Grid.RowDefinitions>
-                        <RowDefinition></RowDefinition>
-                        <RowDefinition Height="Auto" x:Name="SubTitleRowDefinition"></RowDefinition>
-                    </Grid.RowDefinitions>
-                    <TextBlock x:Name="title" DockPanel.Dock="Left" VerticalAlignment="Center" ToolTip="{Binding Title}" Text="{Binding Title}"/>
-                    <TextBlock x:Name="subTitle" ToolTip="{Binding SubTitle}" Grid.Row="1" Text="{Binding SubTitle}"/>
+                <Grid HorizontalAlignment="Stretch" Height="40" VerticalAlignment="Stretch" Margin="5" Cursor="Hand">
+                    <Grid.Resources>
+                        <converters:ImagePathConverter x:Key="ImageConverter" />
+                    </Grid.Resources>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="32"></ColumnDefinition>
+                        <ColumnDefinition/>
+                        <ColumnDefinition x:Name="contextMenuDefinition" Width="0"/>
+                    </Grid.ColumnDefinitions>
+                    <Image x:Name="imgIco" Width="32" Height="32" HorizontalAlignment="Left" Source="{Binding IconPath,Converter={StaticResource ImageConverter},IsAsync=True}" >
+                    </Image>
+                    <Grid HorizontalAlignment="Stretch" Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition Height="Auto" x:Name="SubTitleRowDefinition"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <TextBlock x:Name="title" DockPanel.Dock="Left" VerticalAlignment="Center" ToolTip="{Binding Title}" Text="{Binding Title}"/>
+                        <TextBlock x:Name="subTitle" ToolTip="{Binding SubTitle}" Grid.Row="1" Text="{Binding SubTitle}"/>
+                    </Grid>
                 </Grid>
             </DataTemplate>
         </ListBox.Resources>

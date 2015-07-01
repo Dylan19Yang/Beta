@@ -206,7 +206,7 @@ namespace Beta
         {
             if (result != null)
             {
-                
+                result.Action();
             }
         }
 
@@ -350,6 +350,18 @@ namespace Beta
             }
         }
         
+        private void MainWindow_OnLoaded(object sender, RoutedEventArgs e)
+        {
+            Left = (SystemParameters.PrimaryScreenWidth - ActualWidth) / 2;
+            Top = (SystemParameters.PrimaryScreenHeight - ActualHeight) / 3;
+        }
+
         #endregion
+
+        private void MainWindow_OnDeactivated(object sender, EventArgs e)
+        {
+            HideBeta();
+        }
+
     }
 }
