@@ -20,6 +20,7 @@ using NHotkey.Wpf;
 
 using Beta.Model;
 using Beta.Utils;
+using Beta.Settings;
 using Beta.Model.ComponentSystem;
 
 using ContextMenu = System.Windows.Forms.ContextMenu;
@@ -57,7 +58,7 @@ namespace Beta
             resultListBox.RightMouseClickEvent += ResultListBox_RightMouseClickEvent;
 
             // 关联快捷键 alt+space
-            SetHotKey("Alt + Space", OnHotKey);
+            SetHotKey(UserSetting.Instance.HotKey, OnHotKey);
 
             // 设置线程池上限
             ThreadPool.SetMaxThreads(30, 10);
@@ -356,12 +357,18 @@ namespace Beta
             Top = (SystemParameters.PrimaryScreenHeight - ActualHeight) / 3;
         }
 
-        #endregion
-
         private void MainWindow_OnDeactivated(object sender, EventArgs e)
         {
             HideBeta();
         }
 
+        private void MainWindow_OnClosing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            UserSetting.Instance.Save();
+            HideBeta();
+            e.Cancel = true;
+        }
+
+        #endregion
     }
 }

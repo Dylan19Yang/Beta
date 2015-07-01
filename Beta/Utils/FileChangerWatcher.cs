@@ -26,7 +26,7 @@ namespace Beta.Utils
             }
 
             watchedPath.Add(path);
-            foreach (string fileType in UserSetting.Suffixes.Split(';'))
+            foreach (string fileType in UserSetting.Instance.ProgramSuffixes.Split(';'))
             {
                 FileSystemWatcher watcher = new FileSystemWatcher
                 {

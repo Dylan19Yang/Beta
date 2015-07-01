@@ -8,14 +8,13 @@ using System.IO;
 using System.Windows.Forms;
 
 using Beta.Model;
+using Beta.Settings;
 using Beta.Model.ComponentSystem;
 
 namespace Beta.CustomeComponents
 {
     class WebSearchComponent : Component
     {
-        private List<WebSearchEngine> webSearchEngines = new List<WebSearchEngine>();
-
         public override ComponentMetadata Metadata { get; set; }
 
         public override ComponentContext Context { get; set; }
@@ -24,12 +23,12 @@ namespace Beta.CustomeComponents
         {
             Context = context;
 
-            LoadDefaultSearchEngines();
+            if (UserSetting.Instance.WebSearchEngines == null) UserSetting.Instance.WebSearchEngines = UserSetting.Instance.LoadDefaultWebSearchEngines();
         }
 
         protected override List<Model.Result> DoQuery(Model.Query query)
         {
-            WebSearchEngine webSearchEngine = webSearchEngines.FirstOrDefault(o => o.ActionWord == query.ActionName);
+            WebSearchEngine webSearchEngine = UserSetting.Instance.WebSearchEngines.FirstOrDefault(o => o.ActionWord == query.ActionName);
 
             List<Result> results = new List<Result>();
 
@@ -60,27 +59,6 @@ namespace Beta.CustomeComponents
             }
 
             return results;
-        }
-
-        private void LoadDefaultSearchEngines()
-        {
-            // Google
-            webSearchEngines.Add(new WebSearchEngine()
-            {
-                Title = "Google",
-                IconPath = Path.GetDirectoryName(Application.ExecutablePath) + @"\Images\Google-icon.png",
-                ActionWord = "google",
-                URL = "https://www.google.com/search?q={q}"
-            });
-
-            // Baidu
-            webSearchEngines.Add(new WebSearchEngine()
-            {
-                Title = "Baidu",
-                IconPath = Path.GetDirectoryName(Application.ExecutablePath) + @"\Images\Baidu-icon.png",
-                ActionWord = "baidu",
-                URL = "https://www.baidu.com/s?wd={q}"
-            });
         }
     }
 }

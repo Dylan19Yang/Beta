@@ -29,6 +29,8 @@ namespace Beta.CustomeComponents
         {
             if (query.QueryText.Trim().Length <= 1) return new List<Result>();
 
+            if (!CheckExpressionValid(query.QueryText)) return new List<Result>();
+
             ex = new ExpressionHelper()
             {
                 expre = query.QueryText,

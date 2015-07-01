@@ -47,7 +47,7 @@ namespace Beta.Utils
             {
                 foreach (string file in Directory.GetFiles(path))
                 {
-                    if (UserSetting.Suffixes.Split(';').Any(o => file.EndsWith("." + o)))
+                    if (UserSetting.Instance.ProgramSuffixes.Split(';').Any(o => file.EndsWith("." + o)))
                     {
                         Program p = new Program(file);
                         list.Add(p);
