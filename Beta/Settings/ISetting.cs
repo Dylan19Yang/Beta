@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Beta.Model
+namespace Beta.Settings
 {
-    public static class Config
+    public interface ISetting
     {
-        public static string Suffixes = "lnk;exe;appref-ms;bat";
+        void Load();
+        void Save();
     }
 }

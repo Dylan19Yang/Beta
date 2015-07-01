@@ -56,6 +56,9 @@ namespace Beta.Utils
 
         public static ImageSource Load(string path, bool addToCache = true)
         {
+            path = path.Trim();  
+            path = Environment.ExpandEnvironmentVariables(path); 
+
             if (string.IsNullOrEmpty(path)) return null;
 
             if (imageCache.ContainsKey(path))

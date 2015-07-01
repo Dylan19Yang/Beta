@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
 using Beta.Model;
+using Beta.Settings;
 
 namespace Beta.Utils
 {
@@ -46,7 +47,7 @@ namespace Beta.Utils
             {
                 foreach (string file in Directory.GetFiles(path))
                 {
-                    if (Config.Suffixes.Split(';').Any(o => file.EndsWith("." + o)))
+                    if (UserSetting.Suffixes.Split(';').Any(o => file.EndsWith("." + o)))
                     {
                         Program p = new Program(file);
                         list.Add(p);

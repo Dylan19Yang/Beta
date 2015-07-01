@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 
-using Beta.Model;
+using Beta.Settings;
 using Beta.CustomeComponents;
 
 namespace Beta.Utils
@@ -26,7 +26,7 @@ namespace Beta.Utils
             }
 
             watchedPath.Add(path);
-            foreach (string fileType in Config.Suffixes.Split(';'))
+            foreach (string fileType in UserSetting.Suffixes.Split(';'))
             {
                 FileSystemWatcher watcher = new FileSystemWatcher
                 {
