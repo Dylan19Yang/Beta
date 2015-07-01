@@ -33,5 +33,15 @@ namespace Beta.View
                 lbWebSearchEngines.Items.Add(webSearchEngine);
             }
         }
+
+        private void buttonAddMouseUp(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void buttonEditMouseUp(object sender, MouseButtonEventArgs e)
+        {
+
+        }
     }
 }

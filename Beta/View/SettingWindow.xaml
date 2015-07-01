@@ -22,9 +22,9 @@
         <StackPanel Height="30"/>
         <StackPanel Orientation="Horizontal">
             <StackPanel Width="150"/>
-            <Button Width="100" Height="30" Content="Edit"></Button>
+            <Button Width="100" Height="30" Content="Edit" MouseLeftButtonUp="buttonEditMouseUp"></Button>
             <StackPanel Width="30"/>
-            <Button Width="100" Height="30" Content="Add"></Button>
+            <Button Width="100" Height="30" Content="Add" MouseLeftButtonUp="buttonAddMouseUp"></Button>
         </StackPanel>
     </StackPanel>
 </Window>
