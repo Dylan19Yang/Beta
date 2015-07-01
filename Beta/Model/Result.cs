@@ -15,10 +15,7 @@ namespace Beta.Model
 
         public Func<bool> Action { get; set; }
 
-        public Result()
-        {
-
-        }
+        public Result() { }
 
         public Result(string Title = null, string IconPath = null, string SubTitle = null)
         {

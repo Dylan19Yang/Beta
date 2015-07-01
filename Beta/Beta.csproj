@@ -80,6 +80,8 @@
     <Compile Include="Utils\FileChangerWatcher.cs" />
     <Compile Include="Utils\FileSystemHelper.cs" />
     <Compile Include="Utils\FuzzyMatcher.cs" />
+    <Compile Include="Utils\ImageLoader.cs" />
+    <Compile Include="Utils\ImagePathConverter.cs" />
     <Compile Include="Utils\PeHeaderReader.cs" />
     <Compile Include="Utils\Unidecoder.Characters.cs" />
     <Compile Include="Utils\Unidecoder.cs" />
