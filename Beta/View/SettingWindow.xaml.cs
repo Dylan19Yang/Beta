@@ -41,6 +41,7 @@ namespace Beta.View
 
         public void ShowDetailWindow(int itemNumber)
         {
+            /*
             Dispatcher.Invoke(new Action(() =>
             {
                 var window = Application.Current.Windows.OfType<Window>().FirstOrDefault(x => x.GetType() == typeof(DetailWindow))
@@ -49,6 +50,11 @@ namespace Beta.View
                 window.Show();
                 window.Focus();
             }));
+            */
+            DetailWindow window = new DetailWindow();
+            window.itemNumber = itemNumber;
+            window.Show();
+            window.Focus();
         }
 
         private void buttonAddMouseUp(object sender, MouseButtonEventArgs e)
