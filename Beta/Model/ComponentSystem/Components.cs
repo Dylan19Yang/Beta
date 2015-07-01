@@ -61,7 +61,9 @@ namespace Beta.Model.ComponentSystem
                 Component tempComponent = component;
                 ThreadPool.QueueUserWorkItem(o => component.Init(new ComponentContext()
                 {
-                    GlobalAPI = App.Current.MainWindow as MainWindow
+                    #region Try
+                    //GlobalAPI = App.Current.MainWindow as MainWindow
+                    #endregion
                 }));
             }
         }

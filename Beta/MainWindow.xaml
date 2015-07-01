@@ -7,7 +7,7 @@
         <Border BorderBrush="#FFEBEBEB" BorderThickness="15">
             <StackPanel Orientation="Vertical">
                 <TextBox x:Name="inputTextBox" TextWrapping="Wrap" Margin="0" TextChanged="InputTextBox_OnTextChanged" PreviewKeyDown="InputTextBox_OnPreviewKeyDown" Height="70" FontSize="55" BorderBrush="{x:Null}" Background="#FFD1D1D1" BorderThickness="0"/>
-                <View:ResultListView x:Name="resultListBox"/>
+                <View:ResultListView x:Name="resultListBox" Background="#FFEBEBEB"/>
             </StackPanel>
         </Border>
     </Border>

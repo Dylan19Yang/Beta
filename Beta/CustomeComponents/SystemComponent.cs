@@ -42,8 +42,14 @@ namespace Beta.CustomeComponents
                 Score = o.Score,
                 Action = () =>
                 {
+                    #region try
+                    /*
                     Context.GlobalAPI.HideApp();
                     Context.GlobalAPI.ShellRun(o.ExecutePath);
+                    */                 
+                    Context.InvokeMethodInMainWindow("HideApp", null);
+                    Context.InvokeMethodInMainWindow("ShellRun", new object[]{o.ExecutePath});
+                    #endregion
                     return true;
                 }
             }).ToList();

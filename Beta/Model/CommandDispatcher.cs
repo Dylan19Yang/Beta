@@ -21,8 +21,13 @@ namespace Beta.Model
                 ThreadPool.QueueUserWorkItem(state =>
                 {
                     List<Result> results = tempComponent.Query(query);
-
-                    (App.Current.MainWindow as MainWindow).PushResult(results);
+                    #region Try
+                    App.Current.Dispatcher.Invoke(new Action(() =>
+                    {
+                        (App.Current.MainWindow as MainWindow).PushResult(results);
+                    }));
+                    //(App.Current.MainWindow as MainWindow).PushResult(results);
+                    #endregion
                 });
             }
         }

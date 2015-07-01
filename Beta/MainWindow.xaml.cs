@@ -66,7 +66,7 @@ namespace Beta
             ThreadPool.QueueUserWorkItem(o =>
             {
                 Thread.Sleep(50);
-//                Components.Init();
+                Components.Init();
                 Console.WriteLine("组件初始化完毕！！！");
             });
         }
