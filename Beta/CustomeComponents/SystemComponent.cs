@@ -49,7 +49,7 @@ namespace Beta.CustomeComponents
                     Context.GlobalAPI.ShellRun(o.ExecutePath);
                     */
                     Context.InvokeMethodInMainWindow("HideApp", null);
-                    Context.InvokeMethodInMainWindow("ShellRun", new object[]{o.ExecutePath, false});
+                    Context.InvokeMethodInMainWindow("ShellRun", new object[] { o.ExecutePath, false });
                     #endregion
                     return true;
                 }
