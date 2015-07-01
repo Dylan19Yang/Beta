@@ -2,12 +2,29 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="SettingWindow" Height="500" Width="400">
-    <ListView Margin="0,0,-5,-1.5" ItemTemplate="{DynamicResource DataTemplate}">
-        <ListView.View>
-            <GridView>
-                <GridViewColumn/>
-            </GridView>
-        </ListView.View>
-    </ListView>
-
+    <StackPanel Orientation="Vertical">
+    <ListBox x:Name="lbWebSearchEngines" Margin="0,0,0,0" ItemTemplate="{DynamicResource DataTemplate}" Height="400">
+        <ListBox.Resources>
+            <DataTemplate x:Key="DataTemplate">
+                <Grid HorizontalAlignment="Stretch" Height="40" VerticalAlignment="Stretch" Cursor="Hand">
+                    <Grid.Resources>
+                    </Grid.Resources>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="32"></ColumnDefinition>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock x:Name="actionWord" Grid.Column="0" DockPanel.Dock="Left" VerticalAlignment="Center" ToolTip="{Binding ActionWord}" Text="{Binding ActionWord}"/>
+                    <TextBlock x:Name="title" Grid.Column="1" ToolTip="{Binding Title}" Grid.Row="1" Text="{Binding Title}"/>
+                </Grid>
+            </DataTemplate>
+        </ListBox.Resources>
+    </ListBox>
+        <StackPanel Height="30"/>
+        <StackPanel Orientation="Horizontal">
+            <StackPanel Width="150"/>
+            <Button Width="100" Height="30" Content="Edit"></Button>
+            <StackPanel Width="30"/>
+            <Button Width="100" Height="30" Content="Add"></Button>
+        </StackPanel>
+    </StackPanel>
 </Window>
