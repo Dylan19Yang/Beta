@@ -25,8 +25,8 @@
                             <RowDefinition></RowDefinition>
                             <RowDefinition Height="Auto" x:Name="SubTitleRowDefinition"></RowDefinition>
                         </Grid.RowDefinitions>
-                        <TextBlock x:Name="title" DockPanel.Dock="Left" VerticalAlignment="Center" ToolTip="{Binding Title}" Text="{Binding Title}"/>
-                        <TextBlock x:Name="subTitle" ToolTip="{Binding SubTitle}" Grid.Row="1" Text="{Binding SubTitle}"/>
+                        <TextBlock x:Name="title" DockPanel.Dock="Left" VerticalAlignment="Center" ToolTip="{Binding Title}" Text="{Binding Title}" Margin="5,0,0,0" FontSize="20" FontFamily="Consolas"/>
+                        <TextBlock x:Name="subTitle" ToolTip="{Binding SubTitle}" Grid.Row="1" Text="{Binding SubTitle}" Margin="5,0,0,0"/>
                     </Grid>
                 </Grid>
             </DataTemplate>
