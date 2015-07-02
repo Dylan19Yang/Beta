@@ -164,6 +164,9 @@
     <Resource Include="Images\Baidu-icon.png" />
     <Resource Include="Images\Google-icon.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Search-icon.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>xcopy  /Y /E  $(ProjectDir)Images\* $(TargetDir)Images\

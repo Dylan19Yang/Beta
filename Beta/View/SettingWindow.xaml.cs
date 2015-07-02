@@ -28,6 +28,8 @@ namespace Beta.View
             InitializeComponent();
 
             AddWebSearchEngine(UserSetting.Instance.WebSearchEngines);
+            this.Activated += new EventHandler(Window_GetActivated);
+            
         }
 
         public void AddWebSearchEngine(List<WebSearchEngine> webSearchEngines)
@@ -39,8 +41,14 @@ namespace Beta.View
             }
         }
 
-        public void ShowDetailWindow(int itemNumber)
+        void Window_GetActivated(object sender, EventArgs e)
         {
+            AddWebSearchEngine(UserSetting.Instance.WebSearchEngines);
+        } 
+
+        public void ShowDetailWindow(int number)
+        {
+            /*
             Dispatcher.Invoke(new Action(() =>
             {
                 var window = Application.Current.Windows.OfType<Window>().FirstOrDefault(x => x.GetType() == typeof(DetailWindow))
@@ -49,6 +57,11 @@ namespace Beta.View
                 window.Show();
                 window.Focus();
             }));
+            */
+            DetailWindow window = new DetailWindow(number);
+            window.Show();
+            window.WindowState = WindowState.Normal;
+            window.Focus();
         }
 
         private void buttonAddMouseUp(object sender, MouseButtonEventArgs e)

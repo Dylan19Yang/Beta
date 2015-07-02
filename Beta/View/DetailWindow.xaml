@@ -1,26 +1,29 @@
 ﻿<Window x:Class="Beta.View.DetailWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="DetailWindow" Height="300" Width="300">
-    <Grid Background="#FFEBEBEB">
+        Title="DetailWindow" Height="350" Width="400">
+    <Grid Background="#FFF0F0F0">
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="60"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Label  Grid.Row="0" Content="Title"/>
-        <TextBox x:Name="textTitle" Grid.Row="1" BorderBrush="#FFEBEBEA" BorderThickness="10,5"/>
-        <Label  Grid.Row="2" Content="ActionWord"/>
-        <TextBox x:Name="textActionWord" Grid.Row="3" BorderBrush="#FFEBEBEA" BorderThickness="10,5"/>
-        <Label  Grid.Row="4" Content="URL"/>
-        <TextBox x:Name="textURL" Grid.Row="5" BorderBrush="#FFEBEBEA" BorderThickness="10,5"/>
+        <Label  Grid.Row="0" Content="Title:" VerticalAlignment="Center" Margin="5,5,0,0" FontFamily="Consolas" FontSize="15"/>
+        <TextBox x:Name="textTitle" Grid.Row="1" BorderBrush="#FFB4B4B4" BorderThickness="1" Margin="10,10,10,15" FontSize="20" FontFamily="Consolas"/>
+        <Label  Grid.Row="2" Content="ActionWord:" VerticalAlignment="Center" BorderBrush="#FF929292" BorderThickness="0,1,0,0" Margin="5,5,5,0" FontFamily="Consolas" FontSize="15"/>
+        <TextBox x:Name="textActionWord" Grid.Row="3" BorderBrush="#FFB4B4B4" BorderThickness="1" Margin="10,10,10,15" FontSize="20" FontFamily="Consolas"/>
+        <Label  Grid.Row="4" Content="URL:" VerticalAlignment="Center" BorderThickness="0,1,0,0" BorderBrush="#FF929292" Margin="5,5,5,0" FontFamily="Consolas" FontSize="15"/>
+        <TextBox x:Name="textURL" Grid.Row="5" BorderBrush="#FFB4B4B4" BorderThickness="1" Margin="10,10,10,15" FontSize="20" FontFamily="Consolas"/>
         <StackPanel Grid.Row="6" Orientation="Horizontal">
-            <Button Width="70" Height="30" Content="Cancel" MouseLeftButtonUp="buttonCancelMouseUp"/>
-            <Button Width="70" Height="30" Content="OK" MouseLeftButtonUp="buttonOkMouseUp"/>
+            <StackPanel Width="140
+                        "/>
+            <Button Width="100" Height="30" Content="Cancel" PreviewMouseLeftButtonUp="buttonCancelMouseUp" BorderBrush="#FFB4B4B4" Background="White" FontSize="18" FontFamily="Consolas"/>
+            <StackPanel Width="30"/>
+            <Button Width="100" Height="30" Content="OK" PreviewMouseLeftButtonUp="buttonOkMouseUp" Background="White" BorderBrush="#FFB4B4B4" FontFamily="Consolas" FontSize="18"/>
         </StackPanel>
     </Grid>
 </Window>
