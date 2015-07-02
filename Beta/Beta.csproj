@@ -68,8 +68,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="CustomeComponents\CalculatorComponent.cs" />
-    <Compile Include="CustomeComponents\WebSearchComponent.cs" />
+    <Compile Include="CustomComponents\CalculatorComponent.cs" />
+    <Compile Include="CustomComponents\WebSearchComponent.cs" />
     <Compile Include="Model\CommandDispatcher.cs" />
     <Compile Include="Model\ComponentSystem\Component.cs" />
     <Compile Include="Model\ComponentSystem\ComponentContext.cs" />
@@ -77,7 +77,7 @@
     <Compile Include="Model\ComponentSystem\ComponentMetadata.cs" />
     <Compile Include="Model\ComponentSystem\Components.cs" />
     <Compile Include="Model\ComponentSystem\IComponent.cs" />
-    <Compile Include="CustomeComponents\SystemComponent.cs" />
+    <Compile Include="CustomComponents\SystemComponent.cs" />
     <Compile Include="Settings\UserSetting.cs" />
     <Compile Include="Model\Program.cs" />
     <Compile Include="Settings\ISetting.cs" />
@@ -149,6 +149,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

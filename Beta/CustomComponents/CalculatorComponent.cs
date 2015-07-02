@@ -10,9 +10,9 @@ using Beta.Model;
 using Beta.Model.ComponentSystem;
 using Beta.Utils;
 
-namespace Beta.CustomeComponents
+namespace Beta.CustomComponents
 {
-    class CalculatorComponent:Component
+    public class CalculatorComponent : Component
     {
         public override ComponentMetadata Metadata { get; set; }
 

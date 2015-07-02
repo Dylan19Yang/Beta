@@ -1,0 +1,275 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="Beta.App" Collapsed="true">
+    <Position X="12.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Beta.MainWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="18" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAMAAAYCAAEAAmACAAAASAgSAAAEAAAAgSAQACgo=</HashCode>
+      <FileName>MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Beta.CustomComponents.CalculatorComponent">
+    <Position X="0.5" Y="3.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAABAAAAAAQAAAAAAAAAAAAAAIAEAgA=</HashCode>
+      <FileName>CustomComponents\CalculatorComponent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Beta.CustomComponents.SystemComponent">
+    <Position X="4" Y="3.5" Width="4.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgQAAAARAAAIAASAAAAAAAAAAAAgAAAkCAA=</HashCode>
+      <FileName>CustomComponents\SystemComponent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Beta.CustomComponents.WebSearchComponent">
+    <Position X="9" Y="3.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAABAAAAAAQAAAAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>CustomComponents\WebSearchComponent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Beta.Model.CommandDispatcher" Collapsed="true">
+    <Position X="14.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\CommandDispatcher.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Beta.Model.HotKeyModel" Collapsed="true">
+    <Position X="12.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAgEAEAAEAAAAAEAAAAAAoAgAAAAAAA=</HashCode>
+      <FileName>Model\HotKeyModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Beta.Model.Program" Collapsed="true">
+    <Position X="14.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAYAAAQAAEoAAAQAIAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Beta.Model.Query" Collapsed="true">
+    <Position X="16.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAAAAAAAAQQAAAAAAAAAAAAMAAAAAAA=</HashCode>
+      <FileName>Model\Query.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Beta.Model.Result" Collapsed="true">
+    <Position X="19.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEgEAAAAAEAAEAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Model\Result.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Beta.Model.WebSearchEngine" Collapsed="true">
+    <Position X="19.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAEAAAAAAAECAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\WebSearchEngine.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Beta.Model.ComponentSystem.Component">
+    <Position X="4.75" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAABAAAAAAQAAAAAAAgAAAACAAAEAAA=</HashCode>
+      <FileName>Model\ComponentSystem\Component.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Beta.Model.ComponentSystem.ComponentContext" Collapsed="true">
+    <Position X="16.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>Model\ComponentSystem\ComponentContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Beta.Model.ComponentSystem.ComponentLoader" Collapsed="true">
+    <Position X="18" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAABAABAAAABAAAAAAA=</HashCode>
+      <FileName>Model\ComponentSystem\ComponentLoader.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Beta.Model.ComponentSystem.ComponentMetadata" Collapsed="true">
+    <Position X="19.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAQAEAAAIIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\ComponentSystem\ComponentMetadata.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Beta.Model.ComponentSystem.Components" Collapsed="true">
+    <Position X="21.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAEACAAAAAAAAAAAAQAAACAAAAAAA=</HashCode>
+      <FileName>Model\ComponentSystem\Components.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Beta.Properties.Resources" Collapsed="true">
+    <Position X="18" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Beta.Properties.Settings" Collapsed="true">
+    <Position X="12.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Beta.Settings.UserSetting" BaseTypeListCollapsed="true">
+    <Position X="19.5" Y="6.75" Width="4.25" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAEgIIABEAAIEAAAAAAAAAAAgAAAAAAQAAgAEAAAAA=</HashCode>
+      <FileName>Settings\UserSetting.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Beta.Utils.DispatcherExtensions" Collapsed="true">
+    <Position X="14.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAEAQAAAAAAAAAAAAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>Utils\DispatcherExtension.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Beta.Utils.ExpressionHelper" Collapsed="true">
+    <Position X="16.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>FAAAAAAEAAAAAAAAFIAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Utils\ExpressionHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Beta.Utils.FileChangeWatcher" Collapsed="true">
+    <Position X="18" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAggAAAAAAAAAAABAAAAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>Utils\FileChangerWatcher.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Beta.Utils.FileSystemHelper" Collapsed="true">
+    <Position X="19.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAQAAAACAAgAAAAAAAAAAgAAAA=</HashCode>
+      <FileName>Utils\FileSystemHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Beta.Utils.FuzzyMatcher" Collapsed="true">
+    <Position X="21.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAgAAAgAAAEAAAAAIAAAAAAA=</HashCode>
+      <FileName>Utils\FuzzyMatcher.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Beta.Utils.MatchResult" Collapsed="true">
+    <Position X="21.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAgAAAAAAAAAAgAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Utils\FuzzyMatcher.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Beta.Utils.MatchOption" Collapsed="true">
+    <Position X="19.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAACAAAAAAAAQ=</HashCode>
+      <FileName>Utils\FuzzyMatcher.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Beta.Utils.ImageLoader" Collapsed="true">
+    <Position X="14.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AhCQ5gCJAASQMFAgBAABhABqAAXAEEEAAQAE4AgBCCE=</HashCode>
+      <FileName>Utils\ImageLoader.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Beta.Utils.ImagePathConverter" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="16.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Utils\ImagePathConverter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Beta.Utils.PeHeaderReader" Collapsed="true">
+    <Position X="12.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAADAAoAAAAAgAIIgIAAAIAAAEoIAAAAAAAAAAAA=</HashCode>
+      <FileName>Utils\PeHeaderReader.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Beta.Utils.Unidecoder" Collapsed="true">
+    <Position X="16.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIAAAAAAAAAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Utils\Unidecoder.Characters.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Beta.Utils.WindowsShellRun" Collapsed="true">
+    <Position X="21.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAIBgAECAAAAAAAAAAAFABEAQABRAQAEAAAAAAigA=</HashCode>
+      <FileName>Utils\WindowsShellRun.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Beta.View.DetailWindow" Collapsed="true">
+    <Position X="12.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAQAAAAAAEAAAAAAgAAAAAgAAAAEAAAAAAAAA=</HashCode>
+      <FileName>View\DetailWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Beta.View.ResultListView" Collapsed="true">
+    <Position X="21.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAIAAAAAABAhAAAFgAAAEAACAAAAEEAAAQABAABA=</HashCode>
+      <FileName>View\ResultListView.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Beta.View.SettingWindow" Collapsed="true">
+    <Position X="14.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAAAAAAAgAAAAAAAAAAAAAAAACAAABAAA=</HashCode>
+      <FileName>View\SettingWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="Beta.Utils.Fraction" Collapsed="true">
+    <Position X="12.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAgBAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Utils\ExpressionHelper.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Interface Name="Beta.IGlobalAPI">
+    <Position X="8.5" Y="8" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAICAAAAAAAAAAAAAAAQAAAAAAAAAAAAACgA=</HashCode>
+      <FileName>IGlobalAPI.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Beta.Model.ComponentSystem.IComponent">
+    <Position X="8.5" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAACAAAAAAA=</HashCode>
+      <FileName>Model\ComponentSystem\IComponent.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Beta.Settings.ISetting">
+    <Position X="17.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Settings\ISetting.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Microsoft YaHei UI" Size="9" />
+</ClassDiagram>

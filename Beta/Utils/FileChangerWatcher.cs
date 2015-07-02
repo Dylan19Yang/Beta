@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading;
 
 using Beta.Settings;
-using Beta.CustomeComponents;
+using Beta.CustomComponents;
 
 namespace Beta.Utils
 {

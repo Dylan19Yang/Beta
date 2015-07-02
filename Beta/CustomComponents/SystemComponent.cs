@@ -9,7 +9,7 @@ using Beta.Model;
 using Beta.Model.ComponentSystem;
 using Beta.Utils;
 
-namespace Beta.CustomeComponents
+namespace Beta.CustomComponents
 {
     public class SystemComponent : Component
     {

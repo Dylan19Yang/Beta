@@ -11,9 +11,9 @@ using Beta.Model;
 using Beta.Settings;
 using Beta.Model.ComponentSystem;
 
-namespace Beta.CustomeComponents
+namespace Beta.CustomComponents
 {
-    class WebSearchComponent : Component
+    public class WebSearchComponent : Component
     {
         public override ComponentMetadata Metadata { get; set; }
 
