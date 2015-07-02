@@ -31,6 +31,13 @@ namespace Beta.View
             webSearchEngines = UserSetting.Instance.WebSearchEngines;
             newWebSearchEngine= textInit();
         }
+        public DetailWindow(int number)
+        {
+            InitializeComponent();
+            itemNumber = number;
+            webSearchEngines = UserSetting.Instance.WebSearchEngines;
+            newWebSearchEngine = textInit();
+        }
 
         public WebSearchEngine textInit()
         {
