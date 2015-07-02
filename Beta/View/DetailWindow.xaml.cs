@@ -24,6 +24,7 @@ namespace Beta.View
     {
         private List<WebSearchEngine> webSearchEngines = new List<WebSearchEngine>();
         public int itemNumber{get;set;}
+        public bool isNew;
         private WebSearchEngine newWebSearchEngine = new WebSearchEngine();
         public DetailWindow()
         {
@@ -41,7 +42,10 @@ namespace Beta.View
 
         public WebSearchEngine textInit()
         {
-            if (itemNumber < 0) return new WebSearchEngine();
+            if (itemNumber < 0) {
+                isNew = true;
+                return new WebSearchEngine(); 
+            }
             WebSearchEngine webSerachEngine = webSearchEngines[itemNumber];
             textTitle.Text = webSerachEngine.Title;
             textActionWord.Text = webSerachEngine.ActionWord;
@@ -61,6 +65,11 @@ namespace Beta.View
                 newWebSearchEngine.Title = textTitle.Text;
                 newWebSearchEngine.ActionWord = textActionWord.Text;
                 newWebSearchEngine.URL = textURL.Text;
+                newWebSearchEngine.IconPath = System.IO.Path.GetDirectoryName(System.Windows.Forms.Application.ExecutablePath) + @"\Images\Search-icon.png";
+            }
+            if (isNew)
+            {
+                webSearchEngines.Add(newWebSearchEngine);
             }
             UserSetting.Instance.Save();
             this.Close();
